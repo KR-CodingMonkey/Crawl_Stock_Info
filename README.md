@@ -1,13 +1,13 @@
 # Module_Team_Project
 
-1. 팀
+# Module Project Team
 
 김재원 진하영 정승철 한지혜
 
 
-2. 팀 프로젝트 내용
+# 팀 프로젝트 주제
 
-# 데이터 소스
+## 데이터 소스
     1. 영화평점 데이터 or Box Office (주기적으로 변환하는 데이터를 가져오는 것이 목표)
         - https://www.imdb.com/chart.top
 
@@ -24,7 +24,7 @@
         - timestamp to datetime
         - 날짜 최고가 최저가 시가 종가 거래량 평균가 등...
 
-# 데이터 수집
+## 데이터 수집
     - 크롤링 (Crawling) Scrapy
     - Pipeline -> RDS(0)
     - Pipeline -> kafka(x) -> need to
@@ -39,13 +39,13 @@
     - 기본적인 기술 통계
     - 시각화...
 
-# 시스템 운영
+## 시스템 운영
     - Public cloud
     - Docker container
 
 데이터 소스 - 수집 - 저장 -처리 - 분석 - 표현
 
-3. 구현 과정
+# 구현 과정
 
     1. 주제 선정(배경)
     2. 기능 선정 - 3~5개 정도 ()
@@ -75,7 +75,7 @@
         - Rest framework(학습 전)
     9. 보고서 제출
     
-
+# 세부 내용
 1. 1개의 테이블 200개의 종목 넣어보기
     - 테이블이 존재하지 않으면 생성
     - 있다면 데이터 추가
