@@ -29,12 +29,12 @@
     - Pipeline -> RDS(0)
     - Pipeline -> kafka(x) -> need to
 
-# 데이터 저장
+## 데이터 저장
     - zookeeper + Kafka
     - kafka connect (source, sink)
     - kafka Broker...
 
-# 데이터 분석 
+## 데이터 분석 
     - Python data analysis (pandas, Numpy, Matplotlib)
     - 기본적인 기술 통계
     - 시각화...
@@ -80,9 +80,12 @@
     - 테이블이 존재하지 않으면 생성
     - 있다면 데이터 추가
 
-    a) 이전 데이터 가져오기
+    a) 이전 데이터 가져오기<br/>
     b) 실시간 데이터 가져오기
 
-2. 재무제표 분석
+2. 재무제표 분석 -> 회사 실적 평가
 
+3. 최근 주식 동향 분석
+
+4. 종목 추천
 
