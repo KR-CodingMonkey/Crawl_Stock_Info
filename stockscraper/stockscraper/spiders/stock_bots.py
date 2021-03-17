@@ -42,6 +42,12 @@ class StockBotsSpider(scrapy.Spider):
         stock_code = response.xpath('//*[@id="middle"]/div[1]/div[1]/div/span[1]/text()').extract()
         current_price = response.xpath('//*[@id="_nowVal"]/text()').extract()
         trading_volume = response.xpath('//*[@id="_quant"]/text()').extract()
+
+        if len(trading_volume) <= 10:
+            add_zero_count = 10 - len(trading_volume)
+            add_zero_str = '0' * add_zero_count
+            trading_volume = add_zero_str + trading_volume
+
         fluctuation_rate = response.xpath('//*[@id="_rate"]/span/text()').extract()
         fluctuation_rate = Remove_space(fluctuation_rate)
         foreigner_investor = response.xpath('//*[@id="content"]/div[2]/div[1]/table/tbody/tr[13]/td[1]/span/span/text()').extract()
