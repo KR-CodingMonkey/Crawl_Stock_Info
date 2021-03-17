@@ -1,6 +1,5 @@
 import scrapy
 import csv
-from apscheduler.jobstores.base import JobLookupError
 from stockscraper.items import StockscraperItem
 # from datetime import datetime
 import re
@@ -42,11 +41,6 @@ class StockBotsSpider(scrapy.Spider):
         stock_code = response.xpath('//*[@id="middle"]/div[1]/div[1]/div/span[1]/text()').extract()
         current_price = response.xpath('//*[@id="_nowVal"]/text()').extract()
         trading_volume = response.xpath('//*[@id="_quant"]/text()').extract()
-
-        if len(trading_volume) <= 10:
-            add_zero_count = 10 - len(trading_volume)
-            add_zero_str = '0' * add_zero_count
-            trading_volume = add_zero_str + trading_volume
 
         fluctuation_rate = response.xpath('//*[@id="_rate"]/span/text()').extract()
         fluctuation_rate = Remove_space(fluctuation_rate)
