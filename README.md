@@ -1,6 +1,13 @@
 # Module_Team_Project
 
-# Module Project Team
+recommend_stock.py -> 주식 종목 추천
+get_stock_info.py -> 종목별 재무제표 csv파일로 저장
+
+stock_num.csv -> 코스피200 종목 번호
+stock_info.csv -> 재무제표 데이터 (원본)
+financial_statement.csv -> 재무제표 + 데이터 처리
+
+# Team
 
 김재원 진하영 정승철 한지혜
 
