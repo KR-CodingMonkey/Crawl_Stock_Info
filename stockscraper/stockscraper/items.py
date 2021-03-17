@@ -10,4 +10,7 @@ class StockscraperItem(scrapy.Item):
     current_price = scrapy.Field() # 현재가
     fluctuation_rate = scrapy.Field() # 시가대비 상승률
     trading_volume = scrapy.Field() # 거래량
+    foreigner_investor=scrapy.Field()
     created_at = scrapy.Field() # 데이터를 읽어온 시간
+    foreigner_investor = scrapy.Field()
+

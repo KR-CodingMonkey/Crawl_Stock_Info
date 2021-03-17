@@ -2,8 +2,9 @@ import scrapy
 import csv
 from apscheduler.jobstores.base import JobLookupError
 from stockscraper.items import StockscraperItem
-from datetime import datetime
+# from datetime import datetime
 import re
+import time
 
 # 문자열 공백 제거
 def Remove_space(descs):
@@ -43,11 +44,12 @@ class StockBotsSpider(scrapy.Spider):
         trading_volume = response.xpath('//*[@id="_quant"]/text()').extract()
         fluctuation_rate = response.xpath('//*[@id="_rate"]/span/text()').extract()
         fluctuation_rate = Remove_space(fluctuation_rate)
-        foreigners_investor = response.xpath('//*[@id="content"]/div[2]/div[1]/table/tbody/tr[13]/td[1]/span/span/text()').extract()
+        foreigner_investor = response.xpath('//*[@id="content"]/div[2]/div[1]/table/tbody/tr[13]/td[1]/span/span/text()').extract()
 
-        now = datetime.now()
-        created_at = now.strftime('%Y-%m-%d %H:%M:%S')
-        
+        # now = datetime.now()
+        # created_at = now.strftime('%Y-%m-%d %H:%M:%S')
+        created_at = str(int(time.time()))
+
         items = []
         for idx in range(len(stock_name)):
             item = StockscraperItem()
@@ -56,6 +58,7 @@ class StockBotsSpider(scrapy.Spider):
             item['current_price'] = current_price[idx]
             item['fluctuation_rate'] = fluctuation_rate[idx]
             item['trading_volume'] = trading_volume[idx]
+            item['foreigner_investor'] = foreigner_investor[idx]
             item['created_at'] = created_at
 
             items.append(item)

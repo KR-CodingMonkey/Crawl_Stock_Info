@@ -2,7 +2,6 @@ from kafka import KafkaProducer
 from json import dumps
 import time
 
-
 class StockscraperPipeline(object):
 
     def __init__(self):
@@ -13,9 +12,14 @@ class StockscraperPipeline(object):
 
     def process_item(self, item, spider):
         item = dict(item)
-        item["Quantity"] = int(item["Quantity"].replace(",", ""))
-        item["Price"] = float(item["Price"].replace(",", ""))
-        data = {"schema": {"type": "struct", "fields": [{"type": "int64", "optional": "false", "field": "Quantity"},{"type": "float", "optional": "false", "field": "price"},{"type": "string", "optional": "false", "field": "days_range"},{"type": "string", "optional": "false", "field": "title"},{"type": "int64", "optional": "true","name": "org.apache.kafka.connect.data.Timestamp","version": 1, "field": "search_time"}], "optional": "false","name": "md3stock"},"payload": {"Quantity": item["Quantity"], "price": item["Price"], "days_range": item["days_range"], "title": item["title"], "search_time": int(time.time() * 1000)}}
         
-        self.producer.send("my_project_md3stock", data)
+        item["current_price"] = item["current_price"].replace(",", "")
+        item["foreigner_investor"] = item["foreigner_investor"].replace(",", "")
+        item["trading_volume"] = item["trading_volume"].replace(",", "") 
+
+        data = {"schema":{"type":"struct","fields":[{"type":"int32","optional":False,"field":"id"},{"type":"string","optional":True,"field":"stock_code"},{"type":"string","optional":True,"field":"stock_name"},{"type":"string","optional":True,"field":"current_price"},{"type":"string","optional":True,"field":"fluctuation_rate"},{"type":"string","optional":True,"field":"created_at"},{"type":"string","optional":True,"field":"foreigner_investor"},{"type":"string","optional":True,"field":"trading_volume"}],"optional":False,"name":"my_stock_table"}, "payload":{"id":2,"stock_code":item['stock_code'],"stock_name":item['stock_name'],"current_price":item['current_price'],"fluctuation_rate":item['fluctuation_rate'],"created_at":item['created_at'],"foreigner_investor":item['foreigner_investor'],"trading_volume":item['trading_volume']}}
+
+
+        self.producer.send("my6_stock_table", value=data)
+        # time.sleep(0.3)
         self.producer.flush()
