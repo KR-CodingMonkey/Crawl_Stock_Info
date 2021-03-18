@@ -5,7 +5,6 @@ from operator import itemgetter
 import time
 import datetime
 
-flunctuation_data=[] # DB에서 불러온 상위 10개 종목
 stock_list = [] # 종목 담는 리스트
 
 # DB연결 데이터 불러오기
@@ -21,6 +20,8 @@ def Connect_DB():
 
 # 상위 10개 종목 선정하기
 def Choice_Stock(datas):
+
+    flunctuation_data=[] # DB에서 불러온 상위 10개 종목
 
     for data in datas:
         data = list(data)
@@ -94,9 +95,5 @@ def Recommend_Stock():
     stock_codes, stock_info = Analysis_Data(stocks)
 
     return stock_codes
-
-# 종목코드,매출액-1,매출액-2,매출액-3,영업이익-1,영업이익-2,영업이익-3,당기순이익-1,당기순이익-2,당기순이익-3,ROE(지배주주)-1,ROE(지배주주)-2,ROE(지배주주)-3,PER(배)-1,PER(배)-2,PER(배)-3,PBR(배)-1,PBR(배)-2,PBR(배)-3
-# for i in stock_info:
-#     print(i)
 
 

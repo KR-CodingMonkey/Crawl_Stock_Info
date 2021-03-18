@@ -24,7 +24,6 @@ class StockscraperPipeline(object):
 
         data = {"schema":{"type":"struct","fields":[{"type":"int32","optional":False,"field":"id"},{"type":"string","optional":True,"field":"stock_code"},{"type":"string","optional":True,"field":"stock_name"},{"type":"string","optional":True,"field":"current_price"},{"type":"string","optional":True,"field":"fluctuation_rate"},{"type":"string","optional":True,"field":"created_at"},{"type":"string","optional":True,"field":"foreigner_investor"},{"type":"string","optional":True,"field":"trading_volume"}],"optional":False,"name":"my_stock_table"}, "payload":{"id":2,"stock_code":item['stock_code'],"stock_name":item['stock_name'],"current_price":item['current_price'],"fluctuation_rate":item['fluctuation_rate'],"created_at":item['created_at'],"foreigner_investor":item['foreigner_investor'],"trading_volume":item['trading_volume']}}
 
-
         self.producer.send("my6_stock_table", value=data)
         # time.sleep(0.3)
         self.producer.flush()
