@@ -1,6 +1,13 @@
 # Module_Team_Project
 
-# Module Project Team
+recommend_stock.py -> 주식 종목 추천</br>
+get_stock_info.py -> 종목별 재무제표 csv파일로 저장</br>
+
+stock_num.csv -> 코스피200 종목 번호</br>
+stock_info.csv -> 재무제표 데이터 (원본)</br>
+financial_statement.csv -> 재무제표 + 데이터 처리</br>
+
+# Team
 
 김재원 진하영 정승철 한지혜
 
@@ -85,7 +92,8 @@
 
 2. 재무제표 분석 -> 회사 실적 평가
 
-3. 최근 주식 동향 분석
+3. 주식 최근동향 분석
 
 4. 종목 추천
-
+5. 거래 가장 활발한 종목 5
+6. 
