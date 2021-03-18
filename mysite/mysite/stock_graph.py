@@ -41,9 +41,7 @@ def Draw_Graph(datas, mode:int):
             plot1_date.append(str_time)
 
         # print(plot1_volume)
-
         x_tick = np.arange(0, 100, 4)
-        y_tick = np.arange(0, 8, 1)
 
         fig = plt.figure()
         # graph 1
@@ -69,6 +67,10 @@ def Draw_Graph(datas, mode:int):
         graph_name = stock_code + '.png'
 
         return graph_name
+
+    if mode == 2:
+
+        pass
 
 ## main
 def My_Graph(stock_code):
