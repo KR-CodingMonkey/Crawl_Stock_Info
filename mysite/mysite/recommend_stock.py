@@ -5,7 +5,6 @@ from operator import itemgetter
 import time
 import datetime
 
-stock_list = [] # 종목 담는 리스트
 
 # DB연결 데이터 불러오기
 def Connect_DB():
@@ -20,7 +19,7 @@ def Connect_DB():
 
 # 상위 10개 종목 선정하기
 def Choice_Stock(datas):
-
+    stock_list = [] # 종목 담는 리스트
     flunctuation_data=[] # DB에서 불러온 상위 10개 종목
 
     for data in datas:
@@ -45,6 +44,7 @@ def Analysis_Data(stocks):
     stock_info = []
     recommend_stock_code = [] # 추천 종목 코드
      
+     # /home/ec2-user/test/Module_Team_Project/mysite/mysite
     data = pd.read_csv('C:\\Users\\ahipp\\work\\rest_sample\\mysite\\mysite\\financial_statement.csv')
     data = pd.DataFrame(data)
 

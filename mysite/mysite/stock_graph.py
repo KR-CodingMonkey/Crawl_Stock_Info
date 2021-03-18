@@ -43,7 +43,8 @@ def Draw_Graph(datas, mode:int):
         # print(plot1_volume)
         x_tick = np.arange(0, 100, 4)
 
-        fig = plt.figure()
+        fig = plt.figure(figsize=(10,8))
+
         # graph 1
         ax1 = fig.add_subplot(2,1,1)
         ax1.plot(plot1_date, plot1_volume, color='red', label= 'volume')
@@ -62,8 +63,9 @@ def Draw_Graph(datas, mode:int):
         plt.xlabel('Date Time')
         plt.ylabel('price')
 
-        # plt.show()
-        plt.savefig('{}.png'.format(stock_code))
+        plt.subplots_adjust(hspace=0.35)
+        plt.show()
+        # plt.savefig('{}.png'.format(stock_code))
         graph_name = stock_code + '.png'
 
         return graph_name
@@ -119,3 +121,4 @@ def My_Graph(stock_code):
     datas = Connect_DB(stock_code)
     graph_name = Draw_Graph(datas, 1)
     return graph_name
+My_Graph('352820')

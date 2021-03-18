@@ -73,7 +73,7 @@ class My6TopicTableViewSet(viewsets.ReadOnlyModelViewSet):
     # 해당 code 그래프가 저장된 이미지 파일 경로 표현
     @action(detail=False, methods=['GET'])
     def info_detail(self, request):
-        q = request.query_params.get('q', None) # user input
+        q = request.query_params.get('code', None) # user input
         with open(My_Graph(str(q)), "rb") as image_file: # 함수 
             image_data = base64.b64encode(image_file.read()).decode('utf-8')
 
