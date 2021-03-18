@@ -68,9 +68,51 @@ def Draw_Graph(datas, mode:int):
 
         return graph_name
 
-    if mode == 2:
+def Trade_Rank():
+    flunctuation_data=[] # DB에서 불러온 상위 10개 종목
 
-        pass
+    # DB연결 데이터 불러오기
+    # def Connect_DB():
+    connect = pymysql.connect(host='skuser39-instance.cpeexjfrdqsn.us-east-2.rds.amazonaws.com', user='admin', password='sky45741', db='mydb',charset='utf8mb4')
+    cur = connect.cursor()
+
+    query = "SELECT stock_code, stock_name, fluctuation_rate, max(trading_volume), created_at from my_stock_table GROUP BY stock_code"
+    cur.execute(query)
+    datas = cur.fetchall()
+
+    for data in datas:
+        data = list(data)
+        flunctuation_data.append(data)
+
+    for n in range(len(flunctuation_data)):
+        flunctuation_data[n][3]=int(flunctuation_data[n][3])
+
+    flunctuation_data.sort(key=itemgetter(3),reverse=True)
+
+    stocks = []
+    volumes = []
+    for stock in flunctuation_data[:5]:
+        stocks.append(stock[0])
+        volumes.append(stock[3])
+
+    fig = plt.figure()
+    # graph 1
+    ax1 = fig.add_subplot(1,1,1)
+    ax1.bar(stocks, volumes, color='darkblue', label= 'volume', align = 'center')
+    # plt.xticks(x_tick, rotation = 45, fontsize = 'small')
+    plt.yticks(fontsize = 'small') # y축 폰트 사이즈 설정
+    plt.xticks(fontsize = 'small') # y축 폰트 사이즈 설정
+    plt.ylabel('Volume')
+    plt.xlabel('Stock Code')
+    plt.grid(True, alpha = 0.5, linestyle='--') # grid
+    plt.title('Rank', loc='right')
+
+    # plt.show()
+    plt.savefig('trade_rank.png')
+    graph_name = 'trade_rank.png'
+
+    return graph_name
+    # return stocks, volumes
 
 ## main
 def My_Graph(stock_code):
