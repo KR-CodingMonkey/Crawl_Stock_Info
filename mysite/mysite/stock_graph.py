@@ -121,4 +121,4 @@ def My_Graph(stock_code):
     datas = Connect_DB(stock_code)
     graph_name = Draw_Graph(datas, 1)
     return graph_name
-My_Graph('352820')
+# My_Graph('352820')
