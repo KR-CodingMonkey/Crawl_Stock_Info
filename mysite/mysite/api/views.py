@@ -45,7 +45,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from mysite.recommend_stock import Recommend_Stock
-from mysite.stock_graph import My_Graph
+from mysite.stock_graph import My_Graph, Trade_Rank
 from django.shortcuts import render
 import base64
 
@@ -80,20 +80,18 @@ class My6TopicTableViewSet(viewsets.ReadOnlyModelViewSet):
         ctx = {'image': image_data}
 
         # render (request, index경로, ctx) fix-it
-        return render(request, 'C:\\Users\\A0501660\\Work\\project\\mysite\\mysite\\index.html', ctx)
-
+        return render(request, '/home/ec2-user/test/Module_Team_Project/mysite/mysite/index.html', ctx)
+        # return render(request, 'C:\\Users\\A0501660\\Work\\project\\mysite\\mysite\\index.html', ctx)
+    
     # 외국인 비중이 높은 종목 TOP 5
-    def trading_rank(self, request):
-        
-        stock_data=[]
-        print(stock_codes)
+    @action(detail=False, methods=['GET'])
+    def trade_rank(self, request):
+        with open(Trade_Rank(), "rb") as image_file: # 함수 
+            image_data = base64.b64encode(image_file.read()).decode('utf-8')
 
-        for code in stock_codes:
-            qs = self.get_queryset().filter(stock_code=code)
-            serializer = self.get_serializer(qs, many=True)
-            stock_data.append((serializer.data)[-1])
+        ctx = {'image': image_data}
+        return render(request, '/home/ec2-user/test/Module_Team_Project/mysite/mysite/index.html', ctx)
 
-        return Response(stock_data)
 class StockTableViewSet(viewsets.ModelViewSet):
     queryset = StockTable.objects.all()
     serializer_class = StockTableSerializer
