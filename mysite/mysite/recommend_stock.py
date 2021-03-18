@@ -44,7 +44,7 @@ def Analysis_Data(stocks):
     stock_info = []
     recommend_stock_code = [] # 추천 종목 코드
      
-    data = pd.read_csv('./financial_statement.csv')
+    data = pd.read_csv('C:\\Users\\ahipp\\work\\rest_sample\\mysite\\mysite\\financial_statement.csv')
     data = pd.DataFrame(data)
 
     # stock:문자열 -> 실수형 바꿔주기
@@ -88,11 +88,12 @@ def Analysis_Data(stocks):
     return recommend_stock_code, stock_info
     
 ### main 
-datas = Connect_DB()
-stocks = Choice_Stock(datas)
-stock_codes, stock_info = Analysis_Data(stocks)
+def Recommend_Stock():
+    datas = Connect_DB()
+    stocks = Choice_Stock(datas)
+    stock_codes, stock_info = Analysis_Data(stocks)
 
-print(stock_codes)
+    return stock_codes
 
 # 종목코드,매출액-1,매출액-2,매출액-3,영업이익-1,영업이익-2,영업이익-3,당기순이익-1,당기순이익-2,당기순이익-3,ROE(지배주주)-1,ROE(지배주주)-2,ROE(지배주주)-3,PER(배)-1,PER(배)-2,PER(배)-3,PBR(배)-1,PBR(배)-2,PBR(배)-3
 # for i in stock_info:
