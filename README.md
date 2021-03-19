@@ -17,7 +17,6 @@ financial_statement.csv -> 재무제표 + 데이터 처리</br>
 
 ## 데이터 소스
 
-
     1. 주식 (5분 or 15 분 ...)
         - https://finance.naver.com/main/main.nhn
 
@@ -54,10 +53,18 @@ financial_statement.csv -> 재무제표 + 데이터 처리</br>
         
     3. API 설계 - 입력 주소, 입력 파라미터, 출력 파라미터, 출력 데이터
     
-        a) 
-        -  (GET) http://127.0.0.1:8000/movies/top
-        -  (GET) http://127.0.0.1:8000/weathers/current
+        a) 코스피 200종목 데이터
+        -  (GET) http://3.130.233.168:8000/my_stock_table/
+        
+        b) 주식 거래량 TOP 5
+        -  (GET) http://3.130.233.168:8000/my_stock_table/trade_rank
 
+        c) 종목 추천
+        - (GET) http://3.130.233.168:8000/my_stock_table/recommend_stock
+
+        d) 세부 데이터
+        - (GET) http://3.130.233.168:8000/my_stock_table/inf0_detail/?code=009410
+    
     4. Infrastructure 구성
     5. Scrapy 구현
     6. Kafka 구성
