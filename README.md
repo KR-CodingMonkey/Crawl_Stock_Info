@@ -3,8 +3,9 @@
 recommend_stock.py -> 주식 종목 추천</br>
 get_stock_info.py -> 종목별 재무제표 csv파일로 저장</br>
 
+
 stock_num.csv -> 코스피200 종목 번호</br>
-stock_info.csv -> 재무제표 데이터 (원본)</br>
+stock_code_200.csv -> 재무제표 데이터 (원본)</br>
 financial_statement.csv -> 재무제표 + 데이터 처리</br>
 
 # Team
