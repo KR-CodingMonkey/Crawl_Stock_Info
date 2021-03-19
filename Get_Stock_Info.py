@@ -19,7 +19,7 @@ def getDataOfParam(param):
 
 # csv 파일 종목 가젹오기
 def Read_csv_stock():
-    f = open('write.csv', 'r')
+    f = open('stock_code_200.csv', 'r')
     write_csv = csv.reader(f)
     csv_stocks = list(write_csv)[0]
     f.close()

@@ -22,7 +22,7 @@ class StockBotsSpider(scrapy.Spider):
 
     # csv 파일 읽기
     def Read_csv_stock(self):
-        f = open('write.csv', 'r')
+        f = open('stock_code_200.csv', 'r')
         write_csv = csv.reader(f)
         self.csv_stocks = list(write_csv)[0]
         f.close()
