@@ -88,4 +88,3 @@ financial_statement.csv -> 재무제표 + 데이터 처리</br>
 
 4. 종목 추천
 5. 거래 가장 활발한 종목 5
-6. 
